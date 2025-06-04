@@ -16,12 +16,13 @@ const TodoListItem = ({ title, state, priority, time }) => {
   return (
     <li>
       <h4>
+        {state === "completed" && "✅"}
         {title}
         <span className="state" style={{ backgroundColor: checkState(state) }}>
           {state}
         </span>
       </h4>
-      <p>Priorità: {priority}</p>
+      <p>Priorità: {priority || 0}</p>
       <p>Tempo stimato: {time} min</p>
 
       <AppButton text="Modifica" type="warning" />

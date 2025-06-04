@@ -7,7 +7,6 @@ const TodoList = () => {
     {
       id: 1,
       title: "Implementare la homepage",
-      priority: 1,
       estimatedTime: 120,
       state: "completed",
     },
@@ -75,12 +74,8 @@ const TodoList = () => {
       state: "in_progress",
     },
   ];
-  //
-  //   const filteredTasks = tasks.filter(
-  //     (curTask) => curTask.state === "completed"
-  //   );
-  //
-  //   console.log(filteredTasks);
+
+  // const tasks = [];
 
   const buttonText = "Aggiungi un nuovo todo";
 
@@ -89,17 +84,22 @@ const TodoList = () => {
       <StarTitle titleText="Todolist" />
 
       <AppButton text={buttonText} type="success" />
-      <ul className="todos">
-        {tasks.map((curTask) => (
-          <TodoListItem
-            key={`task-${curTask.id}`}
-            title={curTask.title}
-            state={curTask.state}
-            priority={curTask.priority}
-            time={curTask.estimatedTime}
-          />
-        ))}
-      </ul>
+
+      {tasks.length > 0 ? (
+        <ul className="todos">
+          {tasks.map((curTask) => (
+            <TodoListItem
+              key={`task-${curTask.id}`}
+              title={curTask.title}
+              state={curTask.state}
+              priority={curTask.priority}
+              time={curTask.estimatedTime}
+            />
+          ))}
+        </ul>
+      ) : (
+        <p>Nulla da fare per oggi!</p>
+      )}
     </section>
   );
 };
